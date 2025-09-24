@@ -9,8 +9,19 @@ struct alimento{
     float energia;
     float proteina;
     float carboidrato;
-    char categoria[60];
+    int categoria;
 };
+typedef enum {
+    ALIMENTOS_PREPARADOS,
+    BEBIDAS,
+    CARNES_E_DERIVADOS,
+    CEREAIS_E_DERIVADOS,
+    GORDURAS_E_OLEOS,
+    LEGUMINOSAS_E_DERIVADOS,
+    LEITE_E_DERIVADOS,
+    PRODUTOS_ACUCARADOS
+} CategoriaAlimento;
+
 
 int main(void) {
     FILE* texto_alimentos;
@@ -45,14 +56,31 @@ int main(void) {
             }else if (contador_organizador == 6) {
                 lista_alimentos[indice].carboidrato = atof(item);
             }else if (contador_organizador == 7) {
-                strcpy(lista_alimentos[indice].categoria, item);
+                if (strcmp(item, "Alimentos preparados") == 0) {
+                    lista_alimentos[indice].categoria = ALIMENTOS_PREPARADOS;
+                }else if (strcmp(item, "Bebidas (alcoólicas e não alcoólicas)") == 0) {
+                    lista_alimentos[indice].categoria = BEBIDAS;
+                }else if (strcmp(item, "Carnes e derivados") == 0) {
+                    lista_alimentos[indice].categoria = CARNES_E_DERIVADOS;
+                }else if (strcmp(item, "Cereais e derivados") == 0) {
+                    lista_alimentos[indice].categoria = CEREAIS_E_DERIVADOS;
+                }else if (strcmp(item, "Gorduras e óleos") == 0) {
+                    lista_alimentos[indice].categoria = GORDURAS_E_OLEOS;
+                }else if (strcmp(item, "Leguminosas e derivados") == 0) {
+                    lista_alimentos[indice].categoria = LEGUMINOSAS_E_DERIVADOS;
+                }else if (strcmp(item, "Leite e derivados") == 0) {
+                    lista_alimentos[indice].categoria = LEITE_E_DERIVADOS;
+                }else if (strcmp(item, "Produtos açucarados") == 0) {
+                    lista_alimentos[indice].categoria = PRODUTOS_ACUCARADOS;
+                }
             }
 
             item = strtok(NULL, delimiter);
         }
         indice += 1;
     }
-    printf("alimento %d\ndescricao: %s\numidade: %f\nenergia: %f\nproteina: %f\ncarboidrato: %f\ncategoria: %s ", lista_alimentos[20].numero_alimento, lista_alimentos[20].descricao, lista_alimentos[20].umidade, lista_alimentos[20].energia, lista_alimentos[20].proteina, lista_alimentos[20].carboidrato, lista_alimentos[20].categoria);
+    //printf de teste
+    printf("alimento %d\ndescricao: %s\numidade: %f\nenergia: %f\nproteina: %f\ncarboidrato: %f\ncategoria: %d ", lista_alimentos[20].numero_alimento, lista_alimentos[20].descricao, lista_alimentos[20].umidade, lista_alimentos[20].energia, lista_alimentos[20].proteina, lista_alimentos[20].carboidrato, lista_alimentos[20].categoria);
 
 
     return 0;

@@ -1,0 +1,95 @@
+549,Tabule,85.8,57,1.2,10.6,Alimentos preparados
+534,Cuscuz paulista,68.9,142,2.6,22.5,Alimentos preparados
+546,Salada de legumes cozida no vapor,90.0,35,2.0,7.1,Alimentos preparados
+540,Feijoada,71.8,117,8.7,11.6,Alimentos preparados
+541,Frango com açafrão,79.5,113,9.7,4.1,Alimentos preparados
+538,Estrogonofe de frango,70.9,157,17.6,2.6,Alimentos preparados
+530,Bolinho de arroz,41.5,274,8.0,41.7,Alimentos preparados
+527,Baião de dois arroz e feijão-de-corda,69.1,136,6.2,20.4,Alimentos preparados
+531,Camarão à baiana,82.0,101,7.9,3.2,Alimentos preparados
+536,Dobradinha,75.3,125,19.8,0.0,Alimentos preparados
+526,Arroz carreteiro,68.0,154,10.8,11.6,Alimentos preparados
+545,Salada de legumes com maionese,82.0,96,1.1,8.9,Alimentos preparados
+474,Cerveja pilsen,92.4,41,0.6,3.3,Bebidas (alcoólicas e não alcoólicas)
+479,Refrigerante tipo água tônica,92.0,31,0.0,8.0,Bebidas (alcoólicas e não alcoólicas)
+470,Bebida isotônica sabores variados,93.5,26,0.0,6.4,Bebidas (alcoólicas e não alcoólicas)
+472,Cana aguardente,NA,216,Tr,NA,Bebidas (alcoólicas e não alcoólicas)
+481,Refrigerante tipo guaraná,90.0,39,0.0,10.0,Bebidas (alcoólicas e não alcoólicas)
+482,Refrigerante tipo laranja,88.2,46,0.0,11.8,Bebidas (alcoólicas e não alcoólicas)
+473,Cana caldo de,81.7,65,Tr,18.2,Bebidas (alcoólicas e não alcoólicas)
+476,Chá mate infusão 5%,99.3,3,0.0,0.6,Bebidas (alcoólicas e não alcoólicas)
+471,Café infusão 10%,97.4,9,0.7,1.5,Bebidas (alcoólicas e não alcoólicas)
+480,Refrigerante tipo cola,91.3,34,0.0,8.7,Bebidas (alcoólicas e não alcoólicas)
+478,Coco água de,94.3,22,0.0,5.3,Bebidas (alcoólicas e não alcoólicas)
+477,Chá preto infusão 5%,99.4,2,0.0,0.6,Bebidas (alcoólicas e não alcoólicas)
+326,Carne bovina acém moído cozido,61.6,212,26.7,NA,Carnes e derivados
+323,Apresuntado,73.7,129,13.5,2.9,Carnes e derivados
+327,Carne bovina acém moído cru,72.7,137,19.4,NA,Carnes e derivados
+330,Carne bovina almôndegas cruas,64.3,189,12.3,*,Carnes e derivados
+325,Caldo de galinha tablete,3.4,251,6.3,10.6,Carnes e derivados
+333,Carne bovina bucho cozido,75.0,137,20.5,0.0,Carnes e derivados
+336,Carne bovina capa de contra-filé sem gordura crua,53.7,239,35.1,0.0,Carnes e derivados
+337,Carne bovina capa de contra-filé sem gordura grelhada,53.7,239,35.1,0.0,Carnes e derivados
+329,Carne bovina acém sem gordura cru,71.5,144,20.8,NA,Carnes e derivados
+338,Carne bovina charque cozido,45.8,263,36.4,NA,Carnes e derivados
+324,Caldo de carne tablete,2.9,241,7.8,15.1,Carnes e derivados
+339,Carne bovina charque cru,44.5,249,22.7,NA,Carnes e derivados
+60,Pastel massa frita,1.0,570,6.0,49.3,Cereais e derivados
+19,Canjica branca crua,13.6,358,7.2,78.1,Cereais e derivados
+34,Farinha de rosca,9.8,371,11.4,75.8,Cereais e derivados
+13,Biscoito salgado cream cracker,4.1,432,10.1,68.7,Cereais e derivados
+54,Pão trigo sovado,25.8,311,8.4,61.5,Cereais e derivados
+29,Curau milho verde,81.6,78,1.6,13.9,Cereais e derivados
+48,Pão aveia forma,19.9,343,12.4,59.6,Cereais e derivados
+3,Arroz tipo 1 cozido,69.1,128,2.5,28.1,Cereais e derivados
+17,Bolo pronto coco,29.3,333,5.7,52.3,Cereais e derivados
+28,Creme de milho pó,5.7,333,4.8,86.1,Cereais e derivados
+57,Pastel de queijo cru,31.3,308,9.6,45.9,Cereais e derivados
+55,Pastel de carne cru,34.4,289,8.8,42.0,Cereais e derivados
+268,Óleo de canola,NA,884,NA,NA,Gorduras e óleos
+269,Óleo de girassol,NA,884,NA,NA,Gorduras e óleos
+262,Manteiga sem sal,13.6,758,0.4,0.0,Gorduras e óleos
+259,Azeite de dendê,NA,884,NA,NA,Gorduras e óleos
+260,Azeite de oliva extra virgem,NA,884,NA,NA,Gorduras e óleos
+272,Óleo de soja,NA,884,NA,NA,Gorduras e óleos
+270,Óleo de milho,NA,884,NA,NA,Gorduras e óleos
+264,Margarina com óleo hidrogenado sem sal (80% de lipídeos),19.6,723,Tr,81.7,Gorduras e óleos
+261,Manteiga com sal,15.8,726,0.4,0.1,Gorduras e óleos
+266,Margarina com óleo interesterificado sem sal (65% de lipídeos),33.4,593,Tr,67.1,Gorduras e óleos
+265,Margarina com óleo interesterificado com sal (65%de lipídeos),32.0,594,Tr,67.2,Gorduras e óleos
+263,Margarina com óleo hidrogenado com sal (65% de lipídeos),32.2,596,Tr,67.4,Gorduras e óleos
+574,Feijão roxo cru,12.6,331,22.2,60.0,Leguminosas e derivados
+561,Feijão carioca cozido,80.4,76,4.8,13.6,Leguminosas e derivados
+557,Amendoim grão cru,6.4,544,27.2,20.3,Leguminosas e derivados
+566,Feijão jalo cru,13.5,328,20.1,61.5,Leguminosas e derivados
+568,Feijão preto cru,14.9,324,21.3,58.8,Leguminosas e derivados
+573,Feijão roxo cozido,80.0,77,5.7,12.9,Leguminosas e derivados
+572,Feijão rosinha cru,12.0,337,20.9,62.2,Leguminosas e derivados
+564,Feijão fradinho cru,12.7,339,20.2,61.2,Leguminosas e derivados
+570,Feijão rajado cru,15.0,326,17.3,62.9,Leguminosas e derivados
+569,Feijão rajado cozido,77.9,85,5.5,15.3,Leguminosas e derivados
+560,Ervilha enlatada drenada,80.1,74,4.6,13.4,Leguminosas e derivados
+575,Grão-de-bico cru,12.3,355,21.2,57.9,Leguminosas e derivados
+458,Leite de vaca integral,86.7,65,2.35,7.16,Leite e derivados
+460,Leite fermentado,81.9,70,1.9,15.7,Leite e derivados
+451,Iogurte sabor morango,84.6,70,2.7,9.7,Leite e derivados
+449,Iogurte natural desnatado,89.2,41,3.8,5.8,Leite e derivados
+462,Queijo minas meia cura,47.1,321,21.2,3.6,Leite e derivados
+453,Leite condensado,27.0,313,7.7,57.0,Leite e derivados
+459,Leite de vaca integral pó,2.7,497,25.4,39.2,Leite e derivados
+465,Queijo pasteurizado,54.4,303,27.4,8.2,Leite e derivados
+446,Bebida láctea pêssego,87.7,55,2.1,7.6,Leite e derivados
+455,Leite de vaca achocolatado,80.9,83,2.1,14.2,Leite e derivados
+448,Iogurte natural,90.0,51,3.0,1.9,Leite e derivados
+464,Queijo parmesão,21.2,453,33.5,1.7,Leite e derivados
+506,Marmelada,28.5,257,0.4,70.8,Produtos açucarados
+493,Açúcar mascavo,3.3,369,0.1,94.5,Produtos açucarados
+491,Achocolatado pó,1.1,401,4.2,91.2,Produtos açucarados
+495,Chocolate ao leite,1.3,540,7.2,59.6,Produtos açucarados
+509,Quindim,23.9,411,4.7,46.3,Produtos açucarados
+501,Doce de leite cremoso,27.5,306,5.5,59.5,Produtos açucarados
+510,Rapadura,7.1,352,0.1,90.8,Produtos açucarados
+507,Mel de abelha,15.8,309,0.0,84.0,Produtos açucarados
+499,Cocada branca,3.4,449,1.1,81.4,Produtos açucarados
+500,Doce de abóbora cremoso,43.9,199,0.9,54.6,Produtos açucarados
+504,Maria mole,21.6,301,3.8,73.6,Produtos açucarados
