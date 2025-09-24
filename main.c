@@ -24,6 +24,12 @@ typedef enum {
     FRUTAS_E_DERIVADOS
 } CategoriaAlimento;
 
+void print_categorias(const char* nomes_categoria[]) {
+    printf("categorias:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("%s\n ", nomes_categoria[i]);
+    }
+}
 
 int main(void) {
     FILE* texto_alimentos;
@@ -37,6 +43,8 @@ int main(void) {
     char *item;
     int contador_organizador = 0;
     int indice = 0;
+    const char* nomes_categoria[] = {"alimentos preparados", "bebidas", "carnes e derivados", "cereais e derivados", "gorduras e oleos", "leguminosas e derivados",
+        "leite e derivados", "leite e derivados", "produtos acucarados", "verduras hortalicas e derivados", "frutas e derivados"};
 
     while (fgets(linha, 100, texto_alimentos) != NULL) {
 
@@ -87,14 +95,18 @@ int main(void) {
     }
 
 
-    int status = 0;
-    while (status != 10) {
+    int escolha = 0;
+    while (escolha != 10) {
         printf("Digite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
                "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos com maior percentual de umidade em ordem decrescente de X categoria\n"
                "[5] para ver N alimentos em ordem decrescente de capacidade energetica de X categoria\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
-               "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n[8] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e proteina em ordem decrescente\n"
-               "[9] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e carboidrato em ordem decrescente\n[10] para encerrar o programa");
-
+               "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n"
+               "[8] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e proteina em ordem decrescente\n"
+               "[9] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e carboidrato em ordem decrescente\n[10] para encerrar o programa\ninput: ");
+        scanf("%d", &escolha);
+        if (escolha == 1) {
+            print_categorias(nomes_categoria);
+        }
     }
 
     return 0;
