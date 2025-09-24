@@ -19,7 +19,9 @@ typedef enum {
     GORDURAS_E_OLEOS,
     LEGUMINOSAS_E_DERIVADOS,
     LEITE_E_DERIVADOS,
-    PRODUTOS_ACUCARADOS
+    PRODUTOS_ACUCARADOS,
+    VERDURAS_HORTALICAS_E_DERIVADOS,
+    FRUTAS_E_DERIVADOS
 } CategoriaAlimento;
 
 
@@ -72,6 +74,10 @@ int main(void) {
                     lista_alimentos[indice].categoria = LEITE_E_DERIVADOS;
                 }else if (strcmp(item, "Produtos açucarados") == 0) {
                     lista_alimentos[indice].categoria = PRODUTOS_ACUCARADOS;
+                }else if (strcmp(item, "Verduras hortaliças e derivados") == 0) {
+                    lista_alimentos[indice].categoria = VERDURAS_HORTALICAS_E_DERIVADOS;
+                }else if (strcmp(item, "Frutas e derivados") == 0) {
+                    lista_alimentos[indice].categoria = FRUTAS_E_DERIVADOS;
                 }
             }
 
@@ -79,9 +85,17 @@ int main(void) {
         }
         indice += 1;
     }
-    //printf de teste
-    printf("alimento %d\ndescricao: %s\numidade: %f\nenergia: %f\nproteina: %f\ncarboidrato: %f\ncategoria: %d ", lista_alimentos[20].numero_alimento, lista_alimentos[20].descricao, lista_alimentos[20].umidade, lista_alimentos[20].energia, lista_alimentos[20].proteina, lista_alimentos[20].carboidrato, lista_alimentos[20].categoria);
 
+
+    int status = 0;
+    while (status != 10) {
+        printf("Digite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
+               "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos com maior percentual de umidade em ordem decrescente de X categoria\n"
+               "[5] para ver N alimentos em ordem decrescente de capacidade energetica de X categoria\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
+               "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n[8] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e proteina em ordem decrescente\n"
+               "[9] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e carboidrato em ordem decrescente\n[10] para encerrar o programa");
+
+    }
 
     return 0;
 }
