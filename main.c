@@ -23,7 +23,7 @@ typedef enum {
     PRODUTOS_ACUCARADOS,
     VERDURAS_HORTALICAS_E_DERIVADOS,
     FRUTAS_E_DERIVADOS
-} CategoriaAlimento;
+} categoria_alimento;
 
 void insere_alimentos_lista(char* linha,int indice ,struct alimento* lista_alimentos){
     const char delimiter[] = ",";
@@ -83,6 +83,21 @@ void print_categorias(const char* nomes_categoria[]) {
     }
 }
 
+void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos) {
+    int categoria_escolha = 0;
+    printf("\n\tESCOLHA A CATEGORIA:");
+    for (int i = 0; i < 10; i++) {
+        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
+    }
+    printf("\n\tinput: ");
+    scanf("%d", &categoria_escolha);
+    printf("\n\tAlimentos da categoria %s\n", nomes_categoria[categoria_escolha - 1]);
+    for (int j = 0; j < 100; j++) {
+        if ((lista_alimentos[j].categoria) == categoria_escolha - 1) {
+            printf("\t- %s\n", lista_alimentos[j].descricao);
+        }
+    }
+}
 int main(void) {
     FILE* texto_alimentos;
     texto_alimentos = fopen("alimentos.txt", "r");
@@ -93,7 +108,7 @@ int main(void) {
     char linha[100];
     int indice = 0;
     const char* nomes_categoria[] = {"alimentos preparados", "bebidas", "carnes e derivados", "cereais e derivados", "gorduras e oleos", "leguminosas e derivados",
-        "leite e derivados", "leite e derivados", "produtos acucarados", "verduras hortalicas e derivados", "frutas e derivados"};
+        "leite e derivados", "produtos acucarados", "verduras hortalicas e derivados", "frutas e derivados"};
 
     while (fgets(linha, 100, texto_alimentos) != NULL) {
         insere_alimentos_lista (linha, indice, lista_alimentos);
@@ -112,6 +127,8 @@ int main(void) {
         scanf("%d", &escolha);
         if (escolha == 1) {
             print_categorias(nomes_categoria);
+        }else if (escolha == 2) {
+            todos_alimentos_categoria_x_ordem_alfabetica(nomes_categoria, lista_alimentos);
         }
     }
 
