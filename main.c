@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define MAX_DESCRICAO 65
 
 struct alimento{
     int numero_alimento;
-    char descricao[50];
+    char descricao[MAX_DESCRICAO];
     float umidade;
     float energia;
     float proteina;
@@ -83,19 +84,11 @@ void print_categorias(const char* nomes_categoria[]) {
     }
 }
 
-void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
-    int categoria_escolha = 0;
+int bubble_sort(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha) {
     int contador_local = 0;
     char lista_sort[100][50];
-    char vetor_swap[50];
+    char vetor_swap[MAX_DESCRICAO];
 
-    printf("\n\tESCOLHA A CATEGORIA:");
-    for (int i = 0; i < 10; i++) {
-        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
-    }
-    printf("\n\tinput: ");
-    scanf("%d", &categoria_escolha);
-    printf("\n\tAlimentos da categoria: %s\n", nomes_categoria[categoria_escolha - 1]);
     for (int j = 0; j < total_alimentos; j++) {
         if ((lista_alimentos[j].categoria) == categoria_escolha - 1) {
             strcpy(lista_sort[contador_local], lista_alimentos[j].descricao);
@@ -112,10 +105,26 @@ void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[],
             }
         }
     }
+
     for (int i = 0; i < contador_local; i++) {
         printf("\t- %s\n", lista_sort[i]);
     }
 }
+
+void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
+    int categoria_escolha = 0;
+
+    printf("\n\tESCOLHA A CATEGORIA:");
+    for (int i = 0; i < 10; i++) {
+        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
+    }
+    printf("\n\tinput: ");
+    scanf("%d", &categoria_escolha);
+    printf("\n\tAlimentos da categoria: %s\n", nomes_categoria[categoria_escolha - 1]);
+
+    bubble_sort(total_alimentos, lista_alimentos, categoria_escolha);
+}
+
 int main(void) {
     FILE* texto_alimentos;
     texto_alimentos = fopen("alimentos.txt", "r");
