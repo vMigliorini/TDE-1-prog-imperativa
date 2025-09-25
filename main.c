@@ -11,6 +11,7 @@ struct alimento{
     float carboidrato;
     int categoria;
 };
+
 typedef enum {
     ALIMENTOS_PREPARADOS,
     BEBIDAS,
@@ -24,33 +25,14 @@ typedef enum {
     FRUTAS_E_DERIVADOS
 } CategoriaAlimento;
 
-void print_categorias(const char* nomes_categoria[]) {
-    printf("categorias:\n");
-    for (int i = 0; i < 10; i++) {
-        printf("%s\n ", nomes_categoria[i]);
-    }
-}
-
-int main(void) {
-    FILE* texto_alimentos;
-    texto_alimentos = fopen("alimentos.txt", "r");
-    if (texto_alimentos == NULL) {
-        perror("error");
-    }
-    struct alimento lista_alimentos[100];
-    char linha[100];
+void insere_alimentos_lista(char* linha,int indice ,struct alimento* lista_alimentos){
     const char delimiter[] = ",";
     char *item;
     int contador_organizador = 0;
-    int indice = 0;
-    const char* nomes_categoria[] = {"alimentos preparados", "bebidas", "carnes e derivados", "cereais e derivados", "gorduras e oleos", "leguminosas e derivados",
-        "leite e derivados", "leite e derivados", "produtos acucarados", "verduras hortalicas e derivados", "frutas e derivados"};
 
-    while (fgets(linha, 100, texto_alimentos) != NULL) {
+    linha[strcspn(linha, "\r\n")] = '\0';
+    item = strtok(linha, delimiter);
 
-        linha[strcspn(linha, "\r\n")] = '\0';
-        item = strtok(linha, delimiter);
-        contador_organizador = 0;
         while (item != NULL) {
             contador_organizador += 1;
             if (contador_organizador == 1) {
@@ -91,13 +73,37 @@ int main(void) {
 
             item = strtok(NULL, delimiter);
         }
+
+}
+
+void print_categorias(const char* nomes_categoria[]) {
+    printf("\ncategorias:\n");
+    for (int i = 0; i < 10; i++) {
+        printf("- %s\n ", nomes_categoria[i]);
+    }
+}
+
+int main(void) {
+    FILE* texto_alimentos;
+    texto_alimentos = fopen("alimentos.txt", "r");
+    if (texto_alimentos == NULL) {
+        perror("error");
+    }
+    struct alimento lista_alimentos[100];
+    char linha[100];
+    int indice = 0;
+    const char* nomes_categoria[] = {"alimentos preparados", "bebidas", "carnes e derivados", "cereais e derivados", "gorduras e oleos", "leguminosas e derivados",
+        "leite e derivados", "leite e derivados", "produtos acucarados", "verduras hortalicas e derivados", "frutas e derivados"};
+
+    while (fgets(linha, 100, texto_alimentos) != NULL) {
+        insere_alimentos_lista (linha, indice, lista_alimentos);
         indice += 1;
     }
 
 
     int escolha = 0;
     while (escolha != 10) {
-        printf("Digite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
+        printf("\nDigite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
                "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos com maior percentual de umidade em ordem decrescente de X categoria\n"
                "[5] para ver N alimentos em ordem decrescente de capacidade energetica de X categoria\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
                "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n"
