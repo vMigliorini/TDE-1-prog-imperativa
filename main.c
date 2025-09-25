@@ -83,19 +83,37 @@ void print_categorias(const char* nomes_categoria[]) {
     }
 }
 
-void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos) {
+void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
     int categoria_escolha = 0;
+    int contador_local = 0;
+    char lista_sort[100][50];
+    char vetor_swap[50];
+
     printf("\n\tESCOLHA A CATEGORIA:");
     for (int i = 0; i < 10; i++) {
         printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
     }
     printf("\n\tinput: ");
     scanf("%d", &categoria_escolha);
-    printf("\n\tAlimentos da categoria %s\n", nomes_categoria[categoria_escolha - 1]);
-    for (int j = 0; j < 100; j++) {
+    printf("\n\tAlimentos da categoria: %s\n", nomes_categoria[categoria_escolha - 1]);
+    for (int j = 0; j < total_alimentos; j++) {
         if ((lista_alimentos[j].categoria) == categoria_escolha - 1) {
-            printf("\t- %s\n", lista_alimentos[j].descricao);
+            strcpy(lista_sort[contador_local], lista_alimentos[j].descricao);
+            contador_local += 1;
         }
+    }
+
+    for (int i = 0; i < contador_local - 1; i++) {
+        for (int j = 0; j < contador_local - 1 - i; j++){
+            if (strcmp(lista_sort[j], lista_sort[j + 1]) > 0) {
+                strcpy(vetor_swap, lista_sort[j]);
+                strcpy(lista_sort[j], lista_sort[j + 1]);
+                strcpy(lista_sort[j + 1], vetor_swap);
+            }
+        }
+    }
+    for (int i = 0; i < contador_local; i++) {
+        printf("\t- %s\n", lista_sort[i]);
     }
 }
 int main(void) {
@@ -128,7 +146,7 @@ int main(void) {
         if (escolha == 1) {
             print_categorias(nomes_categoria);
         }else if (escolha == 2) {
-            todos_alimentos_categoria_x_ordem_alfabetica(nomes_categoria, lista_alimentos);
+            todos_alimentos_categoria_x_ordem_alfabetica(nomes_categoria, lista_alimentos, indice);
         }
     }
 
