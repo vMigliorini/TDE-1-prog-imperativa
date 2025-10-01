@@ -3,7 +3,7 @@
 #include <string.h>
 #define MAX_DESCRICAO 65
 #define TAMANHO_LISTA 100
-#include <locale.h>
+#define MAX_ALIMENTOS_POR_LISTA 12
 
 struct alimento{
     int numero_alimento;
@@ -94,6 +94,14 @@ void imprimir_alimento_proteina(struct alimento alim) {
     printf("\t%-40s %.2f g\n", alim.descricao, alim.proteina);
 }
 
+void imprimir_alimento_umidade(struct alimento alim) {
+    printf("\t%-40s %.2f g\n", alim.descricao, alim.umidade);
+}
+
+void imprimir_alimento_carboidrato(struct alimento alim) {
+    printf("\t%-40s %.2f g\n", alim.descricao, alim.carboidrato);
+}
+
 int comparar_por_capacidade_energetica_decrescente(struct alimento a, struct alimento b) {
     if (a.energia < b.energia) {
         return 1;
@@ -107,6 +115,24 @@ int comparar_por_quantidade_de_proteina_decrescente(struct alimento a, struct al
     if (a.proteina < b.proteina) {
         return 1;
     }else if (a.proteina > b.proteina) {
+        return -1;
+    }
+    return 0;
+}
+
+int comparar_por_percentual_de_umidade_decrescente(struct alimento a, struct alimento b) {
+    if (a.umidade < b.umidade) {
+        return 1;
+    }else if (a.umidade > b.umidade) {
+        return -1;
+    }
+    return 0;
+}
+
+int comparar_por_quantidade_de_carboidrato_decrescente(struct alimento a, struct alimento b) {
+    if (a.carboidrato < b.carboidrato) {
+        return 1;
+    }else if (a.carboidrato > b.carboidrato) {
         return -1;
     }
     return 0;
@@ -139,7 +165,7 @@ int bubble_sort_descricao(int total_alimentos, struct alimento* lista_alimentos,
     }
 }
 
-int bubble_sort_float(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha, int (*funcao_comparacao)(struct alimento, struct alimento), void (*funcao_impressao)(struct alimento)) {
+int bubble_sort_float(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha, int (*funcao_comparacao)(struct alimento, struct alimento), void (*funcao_impressao)(struct alimento), int qtd_alimentos_pedidos) {
     int contador_local = 0;
 
     struct alimento alimentos_categoria[TAMANHO_LISTA];
@@ -160,9 +186,16 @@ int bubble_sort_float(int total_alimentos, struct alimento* lista_alimentos, int
             }
         }
     }
-    for (int i = 0; i < contador_local; i++) {
-        funcao_impressao(alimentos_categoria[i]);
+    if (qtd_alimentos_pedidos == 0) {
+        for (int i = 0; i < contador_local; i++) {
+            funcao_impressao(alimentos_categoria[i]);
+        }
+    }else {
+        for (int i = 0; i < qtd_alimentos_pedidos; i++) {
+            funcao_impressao(alimentos_categoria[i]);
+        }
     }
+
 }
 
 void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
@@ -179,9 +212,9 @@ void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[],
     bubble_sort_descricao(total_alimentos, lista_alimentos, categoria_escolha);
 }
 
-void alimentos_ordem_decrescente_capacidade_energetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
+void alimentos_ordem_decrescente_capacidade_energetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos, int limite) {
     int categoria_escolha = 0;
-
+    int qtd_alimentos_pedidos = 0;
 
     printf("\n\tESCOLHA A CATEGORIA:");
     for (int i = 0; i < 10; i++) {
@@ -189,10 +222,15 @@ void alimentos_ordem_decrescente_capacidade_energetica(const char* nomes_categor
     }
     printf("\n\tinput: ");
     scanf("%d", &categoria_escolha);
-    printf("\n\t alimentos em ordem decrescente de capacidade energetica\n");
-
-    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_capacidade_energetica_decrescente, &imprimir_alimento_energia);
-
+    if (limite == 1) {
+        printf("Insira quantos alimentos você quer vizualizar: ");
+        scanf("%d", &qtd_alimentos_pedidos);
+        printf("\n\t alimentos em ordem decrescente de capacidade energetica\n");
+        bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_capacidade_energetica_decrescente, &imprimir_alimento_energia, qtd_alimentos_pedidos);
+    }else {
+        printf("\n\t alimentos em ordem decrescente de capacidade energetica\n");
+        bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_capacidade_energetica_decrescente, &imprimir_alimento_energia, qtd_alimentos_pedidos);
+    }
 }
 
 void alimentos_ordem_decrescente_quantidade_proteina(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
@@ -207,13 +245,42 @@ void alimentos_ordem_decrescente_quantidade_proteina(const char* nomes_categoria
     scanf("%d", &categoria_escolha);
     printf("\n\t alimentos em ordem decrescente de quantidade de proteina\n");
 
-    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_quantidade_de_proteina_decrescente, &imprimir_alimento_proteina);
-
+    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_quantidade_de_proteina_decrescente, &imprimir_alimento_proteina, 0);
 }
 
+void alimento_percentual_de_umidade_decrescente(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
+    int categoria_escolha = 0;
+    int qtd_alimentos_pedidos = 0;
+
+    printf("\n\tESCOLHA A CATEGORIA:");
+    for (int i = 0; i < 10; i++) {
+        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
+    }
+    printf("\n\tinput: ");
+    scanf("%d", &categoria_escolha);
+    printf("Insira quantos alimentos você quer vizualizar: ");
+    scanf("%d", &qtd_alimentos_pedidos);
+    printf("\n\t alimentos em ordem decrescente de pecentual de umidade\n");
+    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_percentual_de_umidade_decrescente, &imprimir_alimento_umidade, qtd_alimentos_pedidos);
+}
+
+void alimentos_quantidade_de_carboidrato_decrescente(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
+    int categoria_escolha = 0;
+    int qtd_alimentos_pedidos = 0;
+
+    printf("\n\tESCOLHA A CATEGORIA:");
+    for (int i = 0; i < 10; i++) {
+        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
+    }
+    printf("\n\tinput: ");
+    scanf("%d", &categoria_escolha);
+    printf("Insira quantos alimentos você quer vizualizar: ");
+    scanf("%d", &qtd_alimentos_pedidos);
+    printf("\n\t alimentos em ordem decrescente de pecentual de umidade\n");
+    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha, &comparar_por_quantidade_de_carboidrato_decrescente, &imprimir_alimento_carboidrato, qtd_alimentos_pedidos);
+}
 
 int main(void) {
-    setlocale(LC_ALL, ""); // Define a localidade para o padrão do sistema
     FILE* texto_alimentos;
     texto_alimentos = fopen("alimentos.txt", "r");
     if (texto_alimentos == NULL) {
@@ -244,10 +311,16 @@ int main(void) {
             print_categorias(nomes_categoria);
         }else if (escolha == 2) {
             todos_alimentos_categoria_x_ordem_alfabetica(nomes_categoria, lista_alimentos, indice);
+        }else if (escolha == 3) {
+            alimentos_ordem_decrescente_capacidade_energetica(nomes_categoria, lista_alimentos, indice, 0);
+        }else if (escolha == 4) {
+            alimento_percentual_de_umidade_decrescente(nomes_categoria, lista_alimentos, indice);
         }else if (escolha == 5) {
-            alimentos_ordem_decrescente_capacidade_energetica(nomes_categoria, lista_alimentos, indice);
+            alimentos_ordem_decrescente_capacidade_energetica(nomes_categoria, lista_alimentos, indice, 1);
         }else if (escolha == 6) {
             alimentos_ordem_decrescente_quantidade_proteina(nomes_categoria, lista_alimentos, indice);
+        }else if (escolha == 7) {
+            alimentos_quantidade_de_carboidrato_decrescente(nomes_categoria, lista_alimentos, indice);
         }
     }
 
