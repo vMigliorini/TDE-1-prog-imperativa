@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #define MAX_DESCRICAO 65
+#define MAX_FLOAT 5
+#define TAMANHO_LISTA 100
 
 struct alimento{
     int numero_alimento;
@@ -84,9 +86,9 @@ void print_categorias(const char* nomes_categoria[]) {
     }
 }
 
-int bubble_sort(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha) {
+int bubble_sort_descricao(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha) {
     int contador_local = 0;
-    char lista_sort[100][50];
+    char lista_sort[TAMANHO_LISTA][MAX_DESCRICAO];
     char vetor_swap[MAX_DESCRICAO];
 
     for (int j = 0; j < total_alimentos; j++) {
@@ -111,6 +113,34 @@ int bubble_sort(int total_alimentos, struct alimento* lista_alimentos, int categ
     }
 }
 
+int bubble_sort_float(int total_alimentos, struct alimento* lista_alimentos, int categoria_escolha) {
+    int contador_local = 0;
+
+    struct alimento alimentos_categoria[TAMANHO_LISTA];
+
+    for (int j = 0; j < total_alimentos; j++) {
+        if ((lista_alimentos[j].categoria) == categoria_escolha - 1) {
+            alimentos_categoria[contador_local] = lista_alimentos[j];
+            contador_local += 1;
+        }
+    }
+
+
+
+    for (int i = 0; i < contador_local - 1; i++) {
+        for (int j = 0; j < contador_local - 1 - i; j++){
+            if (alimentos_categoria[j].energia < alimentos_categoria[j + 1].energia) {
+                struct alimento temp = alimentos_categoria[j];
+                alimentos_categoria[j] = alimentos_categoria[j + 1];
+                alimentos_categoria[j + 1] = temp;
+            }
+        }
+    }
+    for (int i = 0; i < contador_local; i++) {
+        printf("\t%s - %2.f\n", alimentos_categoria[i].descricao, alimentos_categoria[i].energia);
+    }
+}
+
 void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
     int categoria_escolha = 0;
 
@@ -122,7 +152,23 @@ void todos_alimentos_categoria_x_ordem_alfabetica(const char* nomes_categoria[],
     scanf("%d", &categoria_escolha);
     printf("\n\tAlimentos da categoria: %s\n", nomes_categoria[categoria_escolha - 1]);
 
-    bubble_sort(total_alimentos, lista_alimentos, categoria_escolha);
+    bubble_sort_descricao(total_alimentos, lista_alimentos, categoria_escolha);
+}
+
+void alimentos_ordem_decrescente_capacidade_energetica(const char* nomes_categoria[], struct alimento* lista_alimentos, int total_alimentos) {
+    int categoria_escolha = 0;
+
+
+    printf("\n\tESCOLHA A CATEGORIA:");
+    for (int i = 0; i < 10; i++) {
+        printf("\n\t[%d]- %s",i + 1,nomes_categoria[i]);
+    }
+    printf("\n\tinput: ");
+    scanf("%d", &categoria_escolha);
+    printf("\n\t alimentos em ordem decrescente de capacidade energetica\n");
+
+    bubble_sort_float(total_alimentos, lista_alimentos, categoria_escolha);
+
 }
 
 int main(void) {
@@ -156,6 +202,8 @@ int main(void) {
             print_categorias(nomes_categoria);
         }else if (escolha == 2) {
             todos_alimentos_categoria_x_ordem_alfabetica(nomes_categoria, lista_alimentos, indice);
+        }else if (escolha == 5) {
+            alimentos_ordem_decrescente_capacidade_energetica(nomes_categoria, lista_alimentos, indice);
         }
     }
 
