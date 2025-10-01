@@ -372,8 +372,8 @@ int main(void) {
     int escolha = 0;
     while (escolha != 10) {
         printf("\nDigite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
-               "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos com maior percentual de umidade em ordem decrescente de X categoria\n"
-               "[5] para ver N alimentos em ordem decrescente de capacidade energetica de X categoria\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
+               "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos de X categoria com maior percentual de umidade em ordem decrescente\n"
+               "[5] para ver N alimentos  de X categoria em ordem decrescente de capacidade energetica\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
                "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n"
                "[8] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e proteina em ordem decrescente\n"
                "[9] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e carboidrato em ordem decrescente\n[10] para encerrar o programa\ninput: ");
