@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #define MAX_DESCRICAO 65
 #define TAMANHO_LISTA 100
 #define MAX_ALIMENTOS_POR_LISTA 12
@@ -325,6 +326,7 @@ void alimentos_relacao_entre_energia_e_carboidrato_decrescente(const char* nomes
 }
 
 int main(void) {
+    setlocale(LC_ALL, "Portuguese_Brazil.1252");
     FILE* texto_alimentos;
     texto_alimentos = fopen("alimentos.txt", "r");
     if (texto_alimentos == NULL) {
@@ -344,12 +346,19 @@ int main(void) {
 
     int escolha = 0;
     while (escolha != 10) {
-        printf("\nDigite:\n[1] para ver todas as categorias de alimentos\n[2] para ver todos alimentos dentro de X categoria em ordem alfabética de acordo com a descricao do alimento\n"
-               "[3] para ver todos alimentos dentro de X categoria em ordem decrescente de capacidade energetica\n[4] para ver os N alimentos de X categoria com maior percentual de umidade em ordem decrescente\n"
-               "[5] para ver N alimentos  de X categoria em ordem decrescente de capacidade energetica\n[6] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de proteina\n"
-               "[7] para ver os N alimentos de X categoria em ordem decrescente em maior quantidade de carboidrato\n"
-               "[8] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e proteina em ordem decrescente\n"
-               "[9] para ver os N alimentos de X categoria que contem a relacao mais alta entre energia e carboidrato em ordem decrescente\n[10] para encerrar o programa\ninput: ");
+        printf("\n** MENU DE OPÇÕES **\n"
+       "[1] Listar todas as categorias de alimentos\n"
+       "[2] Listar alimentos de uma categoria em ordem alfabética de acordo com a descrição do alimento\n"
+       "[3] Listar TODOS os alimentos de uma categoria em ordem decrescente de capacidade energética\n"
+       "[4] Exibir os 'N' alimentos de uma categoria com maior percentual de umidade em ordem decrescente\n"
+       "[5] Exibir os 'N' alimentos de uma categoria em ordem decrescente de capacidade energética\n"
+       "[6] Exibir os 'N' alimentos de uma categoria em ordem decrescente pela maior quantidade de proteína\n"
+       "[7] Exibir os 'N' alimentos de uma categoria em ordem decrescente pela maior quantidade de carboidrato\n"
+       "[8] Exibir os 'N' alimentos de uma categoria com a relação mais alta entre Energia/Proteína em ordem decrescente\n"
+       "[9] Exibir os 'N' alimentos de uma categoria com a relação mais alta entre Energia/Carboidrato em ordem decrescente\n"
+       "[10] Sair do programa\n"
+       "Escolha uma opção: ");
+
         scanf("%d", &escolha);
         if (escolha == 1) {
             print_categorias(nomes_categoria);
